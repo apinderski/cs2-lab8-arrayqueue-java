@@ -40,7 +40,7 @@ public class TestSimpleQueue {
 
   @Test
   public void testOfferThenPoll() {
-    final String value = "hello";
+    final String value = "helo";
     assertTrue(fixture.offer(value));
     assertEquals(value, fixture.poll());
     assertTrue(fixture.isEmpty());
