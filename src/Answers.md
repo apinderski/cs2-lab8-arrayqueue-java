@@ -23,7 +23,7 @@ size()
 time complexity = O(1)
 space complexity = O(1)
 asList()
-time complexity = O(1)
+time complexity = O(n)
 space complexity =  O(n)
 
 

@@ -63,18 +63,6 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
 
     @Override
     public E poll() {
-        /**if (size > 0) {
-         size--;
-         E j = data[front];
-         for (int i = 1; i < data.length; i++) {
-         data[i - 1] = data[i];
-         }
-         return j;
-         }
-         // TODO
-         return null;
-         }
-         */
         if (size > 0) {
             if (front == capacity - 1) {
                 front = 0;
