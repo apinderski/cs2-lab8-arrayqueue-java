@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class SingleQueueService {
 
   /** Service time per customer in ms. */
-  static final int SERVICE_TIME = 6000;
+  static final int SERVICE_TIME = 2000;
 
   public static void main(final String[] args) throws InterruptedException {
     // TODO read successive input lines until EOF and try to add them to the queue

@@ -29,22 +29,8 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
 
     @Override
     public boolean offer(final E obj) {
-        /**if (capacity > size) {
-         size++;
-         data[size - 1] = obj;
-         return true;
-         }
-         return false;
-         // TODO
-         //return false;
-         }
-         */
         if (capacity > size) {
-            if (rear == capacity - 1) {
-                rear = 0;
-            } else
-                rear += 1;
-
+            rear = (rear + 1) % capacity;
             data[rear] = obj;
             size++;
             return true;
@@ -63,18 +49,13 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
 
     @Override
     public E poll() {
-        if (size > 0) {
-            if (front == capacity - 1) {
-                front = 0;
-                size--;
-                return data[capacity - 1];
-            } else {
-                front++;
-                size--;
-                return data[front - 1];
-            }
+        if (isEmpty()) {
+            return null;
         }
-        return null;
+        final E result = data[front];
+        front = (front + 1) % capacity;
+        size--;
+        return result;
     }
 
 
@@ -93,23 +74,10 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
         // TODO implement using an ArrayList preallocated with the right size
         List<E> list = new ArrayList<>();
         if (data[front] == null) {
-          return list;
+            return list;
         }
-
-        for (int f = front; f < rear || f > rear || f == rear; f++) {
-            if (f < rear) {
-                list.add(data[f]);
-            }
-            if (f > rear) {
-                list.add(data[f]);
-                if (f == capacity - 1) {
-                    f = -1;
-                }
-            }
-            if (f == rear) {
-                list.add(data[f]);
-                break;
-            }
+        for (int i = 0; i < size; i++) {
+            list.add(data[(front + i) % capacity]);
         }
 
         return list;
