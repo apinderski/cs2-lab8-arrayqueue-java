@@ -16,8 +16,6 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
 
     private final E[] data;
 
-    // TODO why do we need an explicit constructor?
-
     @SuppressWarnings("unchecked")
     public FixedArrayQueue(final int capacity) {
         this.capacity = capacity;
@@ -44,7 +42,6 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
             return data[front];
         }
         return null;
-        // TODO
     }
 
     @Override
@@ -71,17 +68,14 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
 
     @Override
     public List<E> asList() {
-        // TODO implement using an ArrayList preallocated with the right size
-        List<E> list = new ArrayList<>();
+        List<E> list = new ArrayList<>(size);
         if (data[front] == null) {
             return list;
         }
         for (int i = 0; i < size; i++) {
             list.add(data[(front + i) % capacity]);
         }
-
         return list;
     }
-
 }
 
